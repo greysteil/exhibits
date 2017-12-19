@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Fixed timeout issue on Add Items page for exhibits with large number of items #1013
 - Fixes a bug where newly created admins and curators were not receiving invitations #1012
+- Fixes a bug where the Mirador full-size button was hidden by the page-picker widget #1022
 ### Security
 
 ## [1.12.1] - 2017-12-13
