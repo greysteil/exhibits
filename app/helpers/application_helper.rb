@@ -45,9 +45,12 @@ module ApplicationHelper
   # @param [SolrDocument] document
   # @param [Integer] canvas_index
   def custom_render_oembed_tag_async(document, canvas_index)
+    query = Search.find(session['search']['id']).query_params['q'] if session['search']['id'].to_i == session['history'].first
     url = document.first(blacklight_config.show.oembed_field)
 
-    content_tag :div, '', data: { embed_url: blacklight_oembed_engine.embed_url(url: url, canvas_index: canvas_index) }
+    content_tag :div, '', data: {
+      embed_url: blacklight_oembed_engine.embed_url(url: url, canvas_index: canvas_index, q: query)
+    }
   end
 
   ##
