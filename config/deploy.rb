@@ -41,5 +41,17 @@ namespace :deploy do
   end
 end
 
+task :migrate_pages_language do
+  on fetch(:migration_servers) do
+    within release_path do
+      with rails_env: fetch(:rails_env) do
+        execute :rake, 'spotlight:migrate_pages_language'
+      end
+    end
+  end
+end
+
+before 'deploy:restart', 'migrate_pages_language'
+
 # honeybadger_env otherwise defaults to rails_env
 set :honeybadger_env, "#{fetch(:stage)}"
